@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -32,7 +33,14 @@ public class Main {
                 9) Pesquisar histórico
                 *****************************************************************************
                 """);
-            option = scan.nextInt();
+            try{
+                option = scan.nextInt();
+
+            }catch (InputMismatchException e){
+                System.out.println("Caractere inválido");
+                scan.next();
+                continue;
+            }
             if (option == 0){break;}
 
                 conversion = search.currencyConvertion(option);
